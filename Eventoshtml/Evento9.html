@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINDE</title>
+    <link rel="stylesheet" href="/Estilos/eventos.css">
+    <link rel="stylesheet" href="/Estilos/Estilos.css">
+    <link rel="stylesheet" href="/Estilos/Estilosinfo.css">
+    <link rel="shortcute icon" href="/Img/logo.png">
+    <script src="https://kit.fontawesome.com/cef7889f92.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href="/Estilos/Estilos.css" type="text/css" rel="Stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+
+    <!-----------------HEADER--------------------->
+
+    <div id="header-hero-container">
+      <header>
+          <div class="flex container">
+              <img src="/Img/logo.png" alt="" id="logo">
+              <nav">
+                  <span><i class="fa-solid fa-user" id="User"></i></span>
+                  <div id="mostrar" style="display: inline-block; margin-left: -30px;">User</div>
+              </nav>
+          </div>
+      </header>
+
+      <section id="hero">
+          <div class="fade"></div>
+          <div class="hero-text">
+              <h1>Desliza para visualizar la Informacion de tu evento</h1>
+              <p>No esperes más!</p>
+          </div>
+      </section>
+  </div>
+
+  
+
+  <script>
+      $(function () {
+          let headerElem = $('header');
+          let logo = $('#logo');
+          let navMenu = $('#nav-menu');
+          let navToggle = $('#nav-toggle');
+          
+          $('#properties-slider').slick({
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              prevArrow: '<a href="#" class="slick-arrow slick-prev">previous</a>',
+              nextArrow: '<a href="#" class="slick-arrow slick-next">next</a>',
+              responsive: [
+                  {
+                      breakpoint: 1100,
+                      settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 1,
+                          infinite: true,
+                      }
+                  },
+                  {
+                      breakpoint: 767,
+                      settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 1,
+                          infinite: true,
+                      }
+                  },
+                  {
+                      breakpoint: 530,
+                      settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                          infinite: true,
+                      }
+                  }
+              ]
+         });
+         
+         $('#testimonials-slider').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow: '<a href="#" class="slick-arrow slick-prev"><</a>',
+              nextArrow: '<a href="#" class="slick-arrow slick-next">></a>'
+          });
+          
+          navToggle.on('click', () => {
+             navMenu.css('right', '0');
+         });
+         
+         $('#close-flyout').on('click', () => {
+              navMenu.css('right', '-100%');
+         });
+
+         $(document).on('click', (e) => {
+             let target = $(e.target);
+             if (!(target.closest('#nav-toggle').length > 0 || target.closest('#nav-menu').length > 0)) {
+                 navMenu.css('right', '-100%');
+              }
+         });
+         
+         $(document).scroll(() => {
+             let scrollTop = $(document).scrollTop();
+
+             if (scrollTop > 0) {
+                 navMenu.addClass('is-sticky');
+                 logo.css('color', '#000');
+                 headerElem.css('background', '#fff');
+                 navToggle.css('border-color', '#000');
+                 navToggle.find('.strip').css('background-color', '#000');
+              } else {
+                 navMenu.removeClass('is-sticky');
+                 logo.css('color', '#fff');
+                 headerElem.css('background', 'transparent');
+                 navToggle.css('bordre-color', '#fff');
+                 navToggle.find('.strip').css('background-color', '#fff');
+             }
+
+             headerElem.css(scrollTop >= 200 ? {'padding': '0.5rem', 'box-shadow': '0 -4px 10px 1px #999'} : {'padding': '1rem 0', 'box-shadow': 'none' });
+         });
+         
+         $(document).trigger('scroll');
+      });
+      </script>
+
+    <!--------------------FIN DEL HEADER Y PORTADA--------------------->
+
+     <!-- Info -->
+     <div>
+        <h1>
+            <small>
+                <span class="fecha">11/8/2022</span>
+            </small>
+            <div class="titulo33">
+                <span>Glovers trotters</span>
+            </div>
+        </h1>
+        <hr>
+        <small>
+            <span class="fecha2">Fecha: 11/8/2022</span>
+        </small><br>
+        <small>
+            <span class="lugar">Lugar: Antel Arena</span>
+        </small><br>
+        <small>
+            <span class="precio">Precio de las entradas: desde 890</span>
+        </small><br>
+        <small>
+            <span class="pago">Pago Web: Visa / MasterCard</span>
+        </small><br>
+        <small>
+            <span class="retiro">Retiro de entradas: Descargá la app y presentá tu ticket para ingresar al evento.</span>
+        </small><br>
+        <small>
+            <span class="locales">Compra de entradas en locales: ↓</span>
+        </small><br>
+        <small>
+            <span class="local">Redpagos | Efectivo | Visa | Master</span>
+        </small>
+        <small><br>
+            <span class="local 2">Abitab | Efectivo | Visa | Master</span>
+        </small><br>
+        <small>
+            <span class="condicion">Condiciones especiales: Preventa con Master Recompensa del 09 al 15/5.</span>
+        </small><br>
+        <img src="/Img/glovers.jpg" alt="" class="harry">
+        <a href="/Compra.html" class="btn" style="margin: 10px 50%;">Comprar</a>
+    </div>
+
+
+   
+    <!--------------------BANNER------------------------>
+    <section class="about" id="sobre-mi" style="background:rgb(236, 236, 236)">
+        <div class="container py-5 " id="about">
+             <div class="row align-items-center">
+                 <div class="col-lg-5 pb-4 pb-lg-0 align-content-center justify-content-center d-flex">
+                     <img class="img-fluid" style="width: 300px; height: 500px;" src="/Img/banner.png" alt="">
+                 </div>
+                 <div class="col-lg-7 py-5">
+                     <h3 class="mb-4">¿Estas listo para vivir una experiencia unica?</h3>
+                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore nam nesciunt aliquam numquam earum vel dolorum impedit ab enim provident rerum, repellendus quod obcaecati tempora repellat quaerat incidunt sit. Suscipit!
+                     Veritatis, asperiores, deserunt dolore, aliquid commodi sit dolores ab voluptate suscipit culpa vero rerum praesentium numquam voluptatem cupiditate. Ipsum voluptate expedita labore dignissimos voluptas. Blanditiis assumenda tempore saepe aspernatur illo?</p>
+                     <div class="row mb-5 d-flex justify-content-center py-2">
+                        <img class="img-fluid" src="/Img/googlePlay.png" style="width: 180px; height: 80px;">
+                        <img class="img-fluid" src="/Img/appStore.png" style="width: 180px; height: 80px;">
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     </section>
+
+    <!--------------------FIN DEL BANNER------------------>
+
+    <!---------------------FOOTER------------------------->
+    
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+      
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" id="iconos"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © Copyright: Tamara, Gabriel, Nahuel - MATEA 2022.
+        </div>
+      </footer>
+
+    <script src="js/fetch.js"></script>
+    <script src="js/filtrado.js"></script>
+    <script src="js/Scriptlog.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
